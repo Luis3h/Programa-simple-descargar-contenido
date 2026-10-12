@@ -6,21 +6,25 @@ package descargar.musica;
 
 import java.io.File;
 
-import javax.swing.JOptionPane;
-
 public class App {
 
     public static void main(String[] args) throws Exception {
 
+        // obtenemos la ruta de la carpeta de descargas del usuario
         String homeUsuario = System.getProperty("user.home");
         String rutaDescargas = homeUsuario + File.separator + "Downloads";
 
+        // objeto de configuracion con la ruta de descargas y el formato de audio
         Config config = new Config(rutaDescargas, "mp3");
         Descargador descargar = new Descargador(config);
 
-        String cancionElegida = JOptionPane.showInputDialog(null, "Link De la cancion:", "Preparando Todo",
-                JOptionPane.QUESTION_MESSAGE);
-        descargar.descargarCancion(cancionElegida);
+        // ventana que pide link de la cancion a descargar
+
+        // descargar.descargarCancion(cancionElegida);
+
+        Ventana miVentana = new Ventana(descargar);
+        miVentana.setVisible(true);
+
     }
 
 }

@@ -5,6 +5,8 @@
 package descargar.musica;
 
 import java.io.File;
+import javax.swing.SwingUtilities;
+import com.formdev.flatlaf.FlatLightLaf;
 
 public class App {
 
@@ -18,12 +20,11 @@ public class App {
         Config config = new Config(rutaDescargas, "mp3");
         Descargador descargar = new Descargador(config);
 
-        // ventana que pide link de la cancion a descargar
-
-        // descargar.descargarCancion(cancionElegida);
-
-        Ventana miVentana = new Ventana(descargar);
-        miVentana.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            FlatLightLaf.setup();
+            Ventana miVentana = new Ventana(descargar);
+            miVentana.setVisible(true);
+        });
 
     }
 
